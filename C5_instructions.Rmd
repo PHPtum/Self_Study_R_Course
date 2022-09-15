@@ -1,0 +1,18 @@
+---
+title: "C5 - Instructions"
+description: |
+  Instructions for chapter 5: "Regression Models" 
+output:
+  distill::distill_article:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+To access the **instructions document**, please click here: 
+[C5 - Instructions](instruction_documents/SSRC_C5_Instructions.pdf) 
+

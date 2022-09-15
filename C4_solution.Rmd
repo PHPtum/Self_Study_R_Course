@@ -1,0 +1,208 @@
+---
+title: "C4 - Sample Solution"
+description: |
+  Here you find the sample solution for the exercise sheet of chapter 4
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+solution = T
+```
+
+
+## Getting ready
+### Task 1
+Create an R project for solving this Exercise Sheet. 
+
+### Task 2
+Download the csv-file [_SSRC_data.csv_](data/SSRC_data.csv) and the R script [_SSRC_C4_template.R_](templates/SSRC_C4_template.R) and put it in the R project folder you created in Task 1.
+
+### Task 3 
+Open the _SSRC_C4_template.R_ R Script.
+
+### Task 4
+Load the _tidyverse_ package. 
+
+```{r task4, include=solution, message=FALSE}
+# Load tidyverse package
+library("tidyverse")
+
+```
+
+### Task 5 
+Use the _read.csv()_ command to load the SSRC data into R and call the respective data object _SSRC_data_.
+
+```{r task5, include=solution}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Task 6
+Get a first impression of the dataset by checking out the dataset using the _str()_ command.
+
+```{r task6, include=solution}
+# Check out the dataset
+str(SSRC_data)
+
+```
+
+### Task 7
+Transform the three character variables in the dataset into factor variables. Make sure that the levels of the _physical_activity_level_ and _education_level_ variables are ordered in a reasonable way. (You learned how to do that in chapter 3)
+
+```{r task7, include=solution}
+# Transform into factor variables 
+SSRC_data <- mutate(SSRC_data, gender = as.factor(gender),
+                               education_level = as.factor(education_level),
+                               physical_activity_level = as.factor(physical_activity_level))
+
+# Order education_level and physical_activity_level in a reasonable way
+SSRC_data <- SSRC_data %>% 
+              mutate(education_level = fct_relevel(education_level, c("low", "medium", "high"))) %>% 
+              mutate(physical_activity_level = fct_relevel(physical_activity_level, c("low", "medium", "high")))
+
+# Check whether it worked out
+levels(SSRC_data$education_level)
+levels(SSRC_data$physical_activity_level)
+
+```
+
+### Task 8
+What kind of plot would be useful to analyze the ...
+
+* the variation of _gender_?
+* the variation of _bmi_?
+* the covariation of _physical_activity_ and _education_level_?
+* the covariation of _bmi_ and _physical_activity_level_?
+* the covariation of _age_ and _bmi_?
+
+```{r task8, include=solution}
+# variation of gender -> Bar Chart
+
+# Variation of bmi -> Histogram
+
+# Covariation of physical_activity_level and education_level -> Heat Map
+
+# Covariation of bmi and physical_activity_level -> Boxplot
+
+# Covariation of age and bmi -> Scatterplot
+
+```
+
+
+## Bar Charts
+
+### Task 9
+Use a bar chart to analyze the distribution of the _physical_activity_level_ variable.
+
+```{r task9, include=solution}
+# Create bar chart
+ggplot(data = SSRC_data) +
+  geom_bar(mapping = aes(x = physical_activity_level))
+
+```
+
+### Task 10
+Create the same bar chart as in Task 9 but with colored bars and a decreased bar-width of 0.5.
+
+```{r task10, include=solution}
+# Create bar chart
+ggplot(data = SSRC_data) +
+  geom_bar(mapping = aes(x = physical_activity_level, fill = physical_activity_level), width = 0.5)
+
+```
+
+## Histograms
+
+### Task 11
+Create a histogram to analyze the distribution of the variable _age_.
+
+```{r task11, include=solution}
+# Create histogram
+ggplot(data = SSRC_data) +
+  geom_histogram(mapping = aes(x = age))
+
+```
+
+### Task 12
+Create the same histogram as in Task 11 but change the binwidth to 1.
+
+```{r task12, include=solution}
+# Create histogram
+ggplot(data = SSRC_data) +
+  geom_histogram(mapping = aes(x = age), binwidth = 1)
+
+```
+
+## Density Plots
+
+### Task 13
+Create a density plot to analyze the distribution of the variable _bmi_.
+
+```{r task13, include=solution}
+# Create density plot
+ggplot(data = SSRC_data) +
+  geom_density(mapping = aes(x = bmi))
+
+```
+
+### Task 14
+Create a plot that depicts the distributions of _bmi_ for males and females in a single plot.
+
+```{r task14, include=solution}
+# Create density plots
+ggplot(data = SSRC_data) +
+  geom_density(mapping = aes(x = bmi, col = gender))
+
+```
+
+## Boxplots
+### Task 15
+Create a set of parallel boxplots to describe the relationship between _education_level_ and bmi. 
+
+```{r task15, include=solution}
+# Create boxplots
+ggplot(data = SSRC_data) +
+  geom_boxplot(mapping = aes(x = education_level, y = bmi))
+
+```
+
+## Scatterplots
+
+### Task 16
+Create a scatterplot to analyze the relationship between _age_ and _bmi_.
+
+```{r task16, include=solution}
+# Create Scatterplot
+ggplot(data = SSRC_data) +
+  geom_point(mapping = aes(x = age, y = bmi))
+
+```
+
+### Task 17
+Create the same scatterplot as in task 16 and add a line that approximates the relationship between _age_ and _bmi_. (Use method = "lm") 
+
+```{r task17, message=TRUE, warning=FALSE, include=solution}
+# Create Scatterplot with a smoother
+ggplot(data = SSRC_data) +
+  geom_point(mapping = aes(x = age, y = bmi)) +
+  geom_smooth(mapping = aes(x = age, y = bmi), method = "lm")
+
+```
+
+### Task 18
+Create the same scatterplot as in task 17 and add three horizontal lines that indicate bmi levels of 18.5, 25 and 30. 
+
+```{r task18, message=TRUE, warning=FALSE, include=solution}
+# Create Scatterplot with horizontal lines
+ggplot(data = SSRC_data) +
+  geom_point(mapping = aes(x = age, y = bmi)) +
+  geom_hline(yintercept = c(18.5, 25, 30))
+  
+
+```

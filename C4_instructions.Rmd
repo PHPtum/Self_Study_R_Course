@@ -1,0 +1,18 @@
+---
+title: "Instructions"
+description: |
+  Instructions for chapter 4: "Data Visualization" 
+output:
+  distill::distill_article:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+To access the **instructions document**, please click here: 
+[C4 - Instructions](instruction_documents/SSRC_C4_Instructions.pdf) 
+

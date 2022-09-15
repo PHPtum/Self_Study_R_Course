@@ -1,0 +1,338 @@
+---
+title: "C6 - Exercise Sheet"
+description: |
+  Here you find the exercise sheet for chapter 6: "Functions and Loops"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+solution = F
+```
+
+
+## Getting ready
+### Task 1
+Create an R project for solving this Exercise Sheet. 
+
+### Task 2
+Download the csv-file [_SSRC_data.csv_](data/SSRC_data.csv) and the R script [_SSRC_C6_template.R_](templates/SSRC_C6_template.R) and put it in the R project folder you created in Task 1.
+
+### Task 3 
+Open the _SSRC_C6_template.R_ R Script.
+
+### Task 4
+Load the _tidyverse_ package. 
+
+```{r task4, include=solution, message=FALSE}
+# Load tidyverse package
+library("tidyverse")
+
+```
+
+### Task 5 
+Use the _read.csv()_ command to load the SSRC data into R and call the respective data object _SSRC_data_.
+
+```{r task5, include=solution}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Task 6
+Get a first impression of the dataset by checking out the dataset using the _str()_ command.
+
+```{r task6, include=solution}
+# Check out the dataset
+str(SSRC_data)
+
+```
+
+### Task 7
+Transform the three categorical variables in the dataset into factor variables. Make sure that the levels of the _physical_activity_level_ and _education_level_ variables are ordered in a reasonable way. 
+
+```{r task7, include=solution}
+# Transform into factor variables 
+SSRC_data <- mutate(SSRC_data, gender = as.factor(gender),
+                               education_level = as.factor(education_level),
+                               physical_activity_level = as.factor(physical_activity_level))
+
+# Order education_level and physical_activity_level in a reasonable way
+SSRC_data <- SSRC_data %>% 
+              mutate(education_level = fct_relevel(education_level, c("low", "medium", "high"))) %>% 
+              mutate(physical_activity_level = fct_relevel(physical_activity_level, c("low", "medium", "high")))
+
+# Check whether it worked out
+levels(SSRC_data$education_level)
+levels(SSRC_data$physical_activity_level)
+
+```
+
+## Functions
+
+### Task 8
+Estimate a linear regression model with _bmi_ as dependent variable and all other variables in the SSRC data set as independent variables. Call this model _lm_mod_.
+
+```{r task8, include=solution}
+# Estimate the model
+lm_mod <- lm(bmi ~ age + gender + education_level + physical_activity_level, data = SSRC_data)
+
+
+```
+
+### Task 9
+Create a data frame with one observation including the four variables: _age_, _gender_, _education_level_ and _physical_activity_level_. The observation is a female person of age 45 who features a medium level of education and a medium level of physical activity. Call this data frame _SSRC_data_new_.
+
+```{r task9, include=solution}
+# Create data frame 
+SSRC_data_new <- data.frame(age = c(45),
+                            gender = c("female"),
+                            education_level = c("medium"),
+                            physical_activity_level = c("medium"))
+
+```
+
+### Task 10
+Use the _lm_mod_ model to predict the bmi for the new observation described in Task 9.
+
+```{r task10, include=solution}
+# Predict bmi for new observation
+predict(object = lm_mod,
+        newdata = SSRC_data_new)
+
+```
+
+### Task 11
+Build a function that enables a convenient bmi prediction for a particular set of covariables. 
+
+The prediction should be based on the same model that you estimated in Task 8. 
+
+Arguments of the function should be a data frame called _data_input_ (default: _SSRC_data_) and the four variables _age_input_ (default: 45), _gender_input_ (default:"female"), _education_input_ (default: "medium") and _physical_input_ (default = "medium"). 
+
+Call the function _bmi_pred_funct_.    
+
+```{r task11, include=solution}
+# Build the function
+bmi_pred_funct <- function(data_input = SSRC_data, 
+                           age_input = 45, 
+                           gender_input = "female", 
+                           education_input = "medium", 
+                           physical_input = "medium"){
+                    
+                    # Estimate model
+                    lm_mod <- lm(bmi ~ age + gender + education_level + physical_activity_level, 
+                                 data = data_input)
+                    
+                    # Set up data frame with new data
+                    SSRC_data_new <- data.frame(age = c(age_input),
+                                                gender = c(gender_input),
+                                                education_level = c(education_input),
+                                                physical_activity_level = c(physical_input))
+                    
+                    # Predict bmi for the new data
+                    bmi_prediction <- predict(object = lm_mod,
+                                      newdata = SSRC_data_new)
+                    
+                    # Return the prediction
+                    return(bmi_prediction)
+  
+}
+
+```
+
+### Task 12
+Run the _bmi_pred_funct_ function with its default values. 
+
+```{r task12, include=solution}
+# Run the function 
+bmi_pred_funct()
+
+```
+
+### Task 13
+Use the _bmi_pred_funct_ function to predict the bmi of a male person of age 59 who features a low level of education and a low level of physical activity.
+
+```{r task13, include=solution}
+# Run the function
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 59, 
+               gender_input = "male", 
+               education_input = "low", 
+               physical_input = "low")
+
+```
+
+
+## Loops
+
+### Task 14
+Use the _bmi_pred_funct_ to predict the bmi for 5 female persons that are 20, 30, 40, 50 and 60 years old. All of them feature a medium education level and a medium physical activity level.
+
+```{r task14, include=solution}
+# Age 20
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 20, 
+               gender_input = "female", 
+               education_input = "medium", 
+               physical_input = "medium")
+
+# Age 30
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 30, 
+               gender_input = "female", 
+               education_input = "medium", 
+               physical_input = "medium")
+
+
+# Age 40
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 40, 
+               gender_input = "female", 
+               education_input = "medium", 
+               physical_input = "medium")
+
+# Age 50
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 50, 
+               gender_input = "female", 
+               education_input = "medium", 
+               physical_input = "medium")
+
+# Age 60
+bmi_pred_funct(data_input = SSRC_data, 
+               age_input = 60, 
+               gender_input = "female", 
+               education_input = "medium", 
+               physical_input = "medium")
+
+```
+
+### Task 15 
+Do the exact same thing as in Task 14 but this time you should use a for loop to do so.
+
+```{r task15, include=solution}
+# Create age vector
+age_vector <- c(20, 30, 40, 50, 60)
+
+# Use for loop to make bmi predictions for each age in the age vector
+
+for (i in 1:length(age_vector)){
+   print(
+          bmi_pred_funct(data_input = SSRC_data, 
+                    age_input = age_vector[i], 
+                    gender_input = "female", 
+                    education_input = "medium", 
+                    physical_input = "medium")
+        )
+
+}
+
+```
+
+### Task 16 
+Do the exact same thing as in Task 15 but this time you save the results of each iteration in a vector called _bmi_predictions_. Check out the content of this vector after creating it.
+
+```{r task16, include=solution}
+# Create age vector
+age_vector <- c(20, 30, 40, 50, 60)
+
+# Create vector to store the results
+bmi_predictions <- numeric(length(age_vector))
+
+# Use for loop to make bmi predictions for each age and store it  
+for (i in 1:length(age_vector)){
+          bmi_predictions[i] <- bmi_pred_funct(data_input = SSRC_data, 
+                                               age_input = age_vector[i], 
+                                               gender_input = "female", 
+                                               education_input = "medium", 
+                                               physical_input = "medium")
+
+}
+
+# Check out the vector
+bmi_predictions
+
+```
+## Bootstrap
+
+In the following tasks we always focus on the bmi prediction for a person that features the default values of our _bmi_pred_funct_ function. We call such a person "default person".
+
+### Task 17 
+Use our _bmi_pred_funct_ function to check out the prediction for our default person.
+
+```{r task17, include=solution}
+# Run the function 
+bmi_pred_funct()
+
+```
+
+### Task 18
+Use the _sample_n()_ command from the dplyr package to draw a random sample (n = 1000) with replacement from our original SSRC dataset. Call this sample _SSRC_data_bootstrap_.
+
+```{r task18, include=solution}
+# Create dataset
+SSRC_data_bootstrap <- sample_n(SSRC_data, 1000, replace = TRUE)
+
+```
+
+### Task 19
+Apply _bmi_pred_funct_ to the _SSRC_data_bootstrap_ dataset to predict the bmi of our default person.
+
+```{r task19, include=solution}
+# Apply function to the bootstrap dataset
+bmi_pred_funct(data_input = SSRC_data_bootstrap)
+
+```
+
+### Task 20
+Use a for loop to repeat what you did in tasks 18/19 1000 times. Store the results in a vector called _bmi_pred_boot_. Check out the _bmi_pred_boot_ vector. 
+
+```{r task20, include=solution}
+# Create vector for the results
+bmi_pred_boot <- numeric(1000)
+
+# Use for loop to fill results vector
+for (i in 1:length(bmi_pred_boot)){
+     
+      # Create dataset
+      SSRC_data_bootstrap <- sample_n(SSRC_data, 1000, replace = TRUE)
+      
+      # Apply function to the bootstrap dataset and save it in the results vector
+      bmi_pred_boot[i] <- bmi_pred_funct(data_input = SSRC_data_bootstrap)
+}
+
+# Check out the vector
+head(bmi_pred_boot)
+
+```
+
+### Task 21
+Create a histogram to analyse the distribution of _bmi_pred_boot_ vector. (Just use _hist()_ from the base R package)
+
+```{r task21, include=solution}
+# Create Histogram
+hist(bmi_pred_boot)
+
+```
+
+### Task 22
+Calculate the mean, standard deviation and the 0.025 and 0.975 quantiles for the _bmi_pred_boot_ vector. 
+
+```{r task22, include=solution}
+# Calculate mean
+mean(bmi_pred_boot)
+
+# Calculate standard deviation
+sd(bmi_pred_boot)
+
+# Calculate quantiles
+quantile(bmi_pred_boot, probs = c(0.025, 0.975))
+
+```
+
+

@@ -1,0 +1,19 @@
+---
+title: "C4 - Introduction"
+description: |
+  Brief introduction to chapter 4: "Data Visualization" 
+output:
+  distill::distill_article:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+In this chapter you will learn how to create plots with the _ggplot2_ package (part of the tidyverse).
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions document provided below guides you though the process of solving the exercise sheet. 
+

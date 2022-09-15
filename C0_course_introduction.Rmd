@@ -1,0 +1,132 @@
+---
+title: "Course Introduction"
+description: |
+  Please read through the course introduction before you start with the first chapter.
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Scope
+
+**The purpose of this course is to teach you basic R programming skills** in a well structured way and a reasonable amount of time. No prior knowledge regarding R or other programming languages are required before starting with the Self-Study R Course (SSRC).  
+
+**This course is not about teaching you statistics**. Hence, results (e.g. of a regression model) or plots are not interpreted in the sample solutions. Obviously, understanding the methods you are applying with R and the interpretation of the respective results should be a crucial part of any data analysis project you are doing. However, to keep this course focused and concise, we decided to ignore statistics and inference aspects to a large extent. 
+
+We assume participants to know some very basic statistics concepts. Which statistics concepts we consider to be very basic is described in the section below. In the chapters where some more advanced statistics methods are applied, we provide links to YouTube videos that explain the respective concepts in an intuitive way. 
+
+## Prior knowledge
+
+We assume participants to know the statistics concepts that are presented in the list below. 
+
+If you do not know a concept, just click on it. You will then be redirected to a YouTube video that explains the concept in an intuitive way.
+
+* [Variable](https://www.youtube.com/watch?v=ZxV-kf0yBss)
+* [Distribution](https://www.youtube.com/watch?v=oI3hZJqXJuc)
+* [Normal Distribution](https://www.youtube.com/watch?v=rzFX5NWojp0)
+* [Mean and Standard Deviation](https://www.youtube.com/watch?v=SzZ6GpcfoQY)
+* [P-value](https://www.youtube.com/watch?v=vemZtEM63GY)
+* [Correlation](https://www.youtube.com/watch?v=qC9_mohleao)
+
+## Learning outcomes
+
+After successfully completing this course, you should be able to
+
+* Use R as a calculator and to create vectors, matrices and data frames in R.
+* Load a dataset into R and to create subsets and summary statistics for it.
+* Do basic data manipulations (e.g. rename variables, create new variables) in R.
+*	Create plots that visualize variation and covariation of different types of variables in R.
+* Estimate regression models in R and use their results for prediction purposes.
+* Create functions that facilitate an easy repetition of various analysis steps in R. 
+* Understand the concept of loops and how they can be efficiently used in R. 
+* Use R Markdown to produce reports that summarize the process and results of a data analytics project.
+* Do a (simple) data analytics project in R completely on your own. 
+
+Although the SSRC covers a lot of important and relevant aspects, it still scratches at the surface of the R universe. If you work with real world data or if you have to apply more complex statistical methods, you will have to extent your R skill set beyond what is covered in the SSRC. This course is supposed to lay the foundation for solving such problems in R, though. Because of that, **the overarching learning objective of this course is that you learn how to learn stuff in R by yourself**. This is why the content and teaching parts of the SSRC are collected from diverse, free and immediately available web sources and not customized videos produced by ourselves.   
+
+## Course Mechanics 
+
+The SSRC consists of eight chapters that are building up on each other. Each chapter has its own tab on this website. The eight chapters are:
+
+1. Getting Started
+2. Data Analysis Basics
+3. Data Manipulation
+4. Data Visualization
+5. Regression Models
+6. Functions and Loops
+7. R Markdown
+8. Case Study 
+
+All chapters (except chapter 8) are structured in the same way. At the core of each chapter is an **exercise sheet** you are supposed to solve throughout the chapter. An instructions document that is provided in the sub-tab "Introduction and Resources" guides you through the process of completing the respective exercise sheet. The **instructions document** tells you step by step what you have to do to solve the exercise sheet. Usually you will be asked to e.g. watch a YouTube video that teaches you the R skills that are needed to solve the subsequent task(s) of the exercise sheet. In a next step, you will then be asked to solve exactly those tasks. 
+
+To make the process of solving the exercise sheets more convenient, we also provide an **R-script template** for each exercise sheet.
+
+There is also a **sample solution** for each of the exercise sheets and the case study. However, we recommend that you really try hard to solve the exercise sheets on your own before you check out the sample solution.  
+
+If you have problems with working with the SSRC, please check out the FAQs. If the FAQs cannot help you, you can also contact us via e-mail (to [php@sg.tum.de](mailto:php@sg.tum.de), subject: SSRC).
+
+## Time management
+
+The time you will need for a particular chapter and the whole SSRC depends on your programming experience, talent, accuracy, pragmatism etc. This means that it is impossible to make a general statement regarding time requirements. However, to facilitate better planning for you, we at least provide a rough time estimate for each of the chapters below. If you need more time for one or the other chapter, you should not feel bad about it, though. 
+
+Rough Time Estimates: 
+
+Chapter 1: 2-3h
+
+Chapter 2: 3-4h
+
+Chapter 3: 3-4h
+
+Chapter 4: 3-4h
+
+Chapter 5: 2-3h
+
+Chapter 6: 3-4h
+
+Chapter 7: 2-3h
+
+Chapter 8: 6-8h
+
+In total the course will require a time effort of about 30 hours. 
+
+When you invest your time to do the chapters is completely up to you. You can do the whole course in just one week, do one chapter per week, etc. However, since the chapters are building up on each other, you should not let to much time pass between doing the different chapters.
+
+## Tips on working with R
+
+The R community is very active and helpful. There are YouTube videos, blog posts, forum discussions (e.g. Stackoverflow) on almost everything.
+
+Furthermore, many ebooks on learning and using R are free and available online: [https://bookdown.org/](https://bookdown.org/)
+
+If you want to do something in R but you do not now how to do it...
+
+* Google it!!!
+* Search for what you need (e.g. “rename variables”) and add “in R”
+* The information is almost certainly available, you just need to find it…;)
+* Even experienced R users google all the time.
+
+
+## Troubleshooting
+
+As soon as you start working with R, you will also start getting error messages from R. Do not worry about that, this is absolutely normal. Even the most experienced R users regularly make this experience. The important thing is that you know how to deal with these error messages once they occur. Below you find a list of things that you could do when you get an error message:
+
+* Check whether all brackets are closed and located correctly.
+* Check whether you have installed and loaded all required packages.
+* Check your code for typos.
+* Check whether R´s case sensitivity might be the reason for the error.
+* Check for missing or unwarranted quotation marks.
+* Close and restart R and RStudio
+* Google the error message (or parts of it) and search for potential reasons that trigger this error message.
+
+In 99.9 % of the cases this will do the job. 
+
+If you cannot find a solution in a reasonable amount of time, you should start looking for a workaround (e.g. a different R package).
+
+[Do not worry if you do not yet understand all of the bullet points above. After doing the first two chapters of the SSRC, this should all make sense to you.]
+

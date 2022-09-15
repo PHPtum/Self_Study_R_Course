@@ -1,0 +1,228 @@
+---
+title: "C5 - Exercise Sheet"
+description: |
+  Here you find the exercise sheet for chapter 5: "Regression Models"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+solution = F
+```
+
+
+## Getting ready
+### Task 1
+Create an R project for solving this Exercise Sheet. 
+
+### Task 2
+Download the csv-file [_SSRC_data.csv_](data/SSRC_data.csv) and the R script [_SSRC_C5_template.R_](templates/SSRC_C5_template.R) and put it in the R project folder you created in Task 1.
+
+### Task 3 
+Open the _SSRC_C5_template.R_ R Script.
+
+### Task 4
+Load the _tidyverse_ package. 
+
+```{r task4, include=solution, message=FALSE}
+# Load tidyverse package
+library("tidyverse")
+
+```
+
+### Task 5 
+Use the _read.csv()_ command to load the SSRC data into R and call the respective data object _SSRC_data_.
+
+```{r task5, include=solution}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Task 6
+Get a first impression of the dataset by checking out the dataset using the _str()_ command.
+
+```{r task6, include=solution}
+# Check out the dataset
+str(SSRC_data)
+
+```
+
+### Task 7
+Transform the three categorical variables in the dataset into factor variables. Make sure that the levels of the _physical_activity_level_ and _education_level_ variables are ordered in a reasonable way. (You learned how to do that in chapter 2)
+
+```{r task7, include=solution}
+# Transform into factor variables 
+SSRC_data <- mutate(SSRC_data, gender = as.factor(gender),
+                               education_level = as.factor(education_level),
+                               physical_activity_level = as.factor(physical_activity_level))
+
+# Order education_level and physical_activity_level in a reasonable way
+SSRC_data <- SSRC_data %>% 
+              mutate(education_level = fct_relevel(education_level, c("low", "medium", "high"))) %>% 
+              mutate(physical_activity_level = fct_relevel(physical_activity_level, c("low", "medium", "high")))
+
+# Check whether it worked out
+levels(SSRC_data$education_level)
+levels(SSRC_data$physical_activity_level)
+
+```
+
+## Linear Regression
+
+### Task 8
+Analyze the relationship between age and bmi by fitting a linear regression model with the variable _bmi_ as dependent variable and _age_ as independent variable. Call this model _lm_mod_restricted_. Use the _summary()_ command to check out the results.
+
+```{r task8, include=solution}
+# Estimate the model
+lm_mod_restricted <- lm(bmi ~ age , data = SSRC_data)
+
+# Check out model results
+summary(lm_mod_restricted) 
+
+```
+
+
+### Task 9
+Estimate a linear regression model with _bmi_ as dependent variable and all other variables in the SSRC data set as independent variables. Call this model _lm_mod_full_. Use the _summary()_ command to check out the results.
+
+```{r task9, include=solution}
+
+# Estimate the model
+lm_mod_full <- lm(bmi ~ age + gender + education_level + physical_activity_level, data = SSRC_data)
+
+# Check out model results
+summary(lm_mod_full) 
+
+```
+
+## Fitted Values and Residuals
+
+### Task 10
+Use the _lm_mod_full_ model you just fitted in task 9 to add the fitted bmi values to the SSRC dataset. Call this new variable _bmi_fitted_. Use the _str()_ command to check out whether it worked. 
+
+```{r task10, include=solution}
+# Add fitted bmi values to SSRC dataset
+SSRC_data$bmi_fitted <- lm_mod_full$fitted.values
+
+# Check out whether it worked
+str(SSRC_data)
+
+```
+
+### Task 11
+Calculate the residuals by substracting the fitted values from the true observed bmi values and add this _residuals_ variable to the SSRC dataset. Check out whether it worked. 
+
+```{r task11, include=solution}
+# Calculate residuals
+SSRC_data <- mutate(SSRC_data, residuals = bmi - bmi_fitted)
+
+# Check out whether it worked
+str(SSRC_data)
+
+```
+
+
+### Task 12
+Analyze the distribution of the _residuals_ variable you created in task 11 with a histogram and a density plot.  
+
+```{r task12, include=solution}
+# Histogram
+ggplot(data = SSRC_data) +
+  geom_histogram(mapping = aes(x = residuals))
+
+# Density Plot
+ggplot(data = SSRC_data) +
+  geom_density(mapping = aes(x = residuals))
+
+```
+
+## Prediction
+
+### Task 13
+Create a data frame with two observations and the four variables: _age_, _gender_, _education_level_ and _physical_activity_level_. The first observation is a female person of age 28 who features both a high level of education and a high level of physical activity. The second observation is a male person of age 59 who features a medium level of education and a low level of physical activity. Call this data frame _SSRC_data_new_.
+
+```{r task13, include=solution}
+# Create data frame 
+SSRC_data_new <- data.frame(age = c(28, 59),
+                            gender = c("female", "male"),
+                            education_level = c("high", "medium"),
+                            physical_activity_level = c("high", "low"))
+
+```
+
+### Task 14
+Use the _lm_mod_full_ model to predict the bmi for the two new observations described in Task 13.
+
+```{r task14, include=solution}
+# Predict bmi for new observations
+predict(object = lm_mod_full,
+        newdata = SSRC_data_new)
+
+```
+
+
+## Extracting Coefficients
+
+### Task 15
+Extract the beta coefficients for the _age_ variable from the _lm_mod_full_ and the _lm_mod_restricted_ model objects. Combine them in data frame that displays the two age coefficients nicely next to each other and where the columns are called _full_model_ and _restricted_model_. Call this data frame _age_coefficients_ and check it out after creating it. 
+
+```{r task15, include=solution}
+# Extract coefficient from the full model
+matrix_coef_full <- summary(lm_mod_full)$coefficients
+age_coef_full <- matrix_coef_full[2,1]
+
+# Extract coefficient from the restricted model
+matrix_coef_restricted <- summary(lm_mod_restricted)$coefficients
+age_coef_restricted <- matrix_coef_restricted[2,1]
+
+# Create data frame
+age_coefficients <- data.frame(full_model = c(age_coef_full),
+                               restricted_model = c(age_coef_restricted))
+
+# Check out the created data frame
+age_coefficients
+
+```
+
+
+## Logistic Regression
+
+### Task 16
+Create an indicator variable that equals one if the bmi of a person is larger or equal to 30 and zero otherwise. Add this variable to the SSRC dataset and call it _obesity_. (You can use the _mutate()_ command in combination with the _ifelse()_ command to do this in one line of code)
+
+```{r task16, include=solution}
+# Create obesity indicator
+SSRC_data <- mutate(SSRC_data, obesity = ifelse(bmi >= 30, 1, 0))
+```
+
+### Task 17
+Fit a logistic regression model with the _obesity_ variable as dependent variable and _age_, _gender_, _education_level_ and _physical_activity_level_ as independent variables. Call this model _logit_mod_. Use the _summary()_ command to check out the results. 
+
+```{r task17, include=solution}
+# Fit logistic regression model
+logit_mod <- glm(obesity ~ age  + gender + education_level + physical_activity_level, 
+                 data = SSRC_data, 
+                 family = binomial)
+
+# Check out the results
+summary(logit_mod)
+```
+
+### Task 18
+Predict the probability that the two new observations described in Task 13 are obese. You can reuse the _SSRC_data_new_ dataframe. You can also use the _type_ option of the _predict()_ command to get the predicted probabilities directly. Just set _type_ equal to "response". 
+
+```{r task18, include=solution}
+# Calculate the obesity probability for the two new observations
+predict(object = logit_mod,
+        newdata = SSRC_data_new,
+        type = "response")
+```
+
+
+

@@ -1,0 +1,135 @@
+---
+title: "C2 - Exercise Sheet"
+description: |
+  Here you find the exercise sheet for chapter 2: "Data Analysis Basics"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+solution = F
+```
+
+
+## Start a project and import data 
+### Task 1
+Create an R project for solving this Exercise Sheet. 
+
+### Task 2
+Download the csv-file [SSRC_data.csv](data/SSRC_data.csv) and the R script [SSRC_C2_template.R](templates/SSRC_C2_template.R) and put it in the R project folder you created in Task 1.
+
+### Task 3 
+Open the _SSRC_C2_template.R_ R Script.
+
+### Task 4 
+Use the _read.csv()_ command to load the SSRC data into R and call the respective data object _SSRC_data_.
+
+```{r task4, include=solution}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Task 5
+Get a first impression of the dataset by checking out the first 6 rows of the dataset and by looking at the data in the spreadsheet mode.
+
+```{r task5, include=solution}
+# Check out the first 6 rows
+head(SSRC_data)
+
+# Produce spreadsheet mode
+View(SSRC_data)
+
+
+```
+
+### Task 6
+Install and load the _tidyverse_ package. 
+(If you have already installed the package before, loading the package is sufficient)
+
+```{r task6, include=solution}
+# Install tidyverse package (if you have not done it yet)
+# install.packages("tidyverse")
+
+# Load tidyverse package
+library("tidyverse")
+
+```
+
+## Isolating data 
+### Task 7
+Create a dataset that only contains the variables _age_ and _bmi_ and call this dataset _SSRC_data_C2_task_7_. Check out the first six rows of this dataset.
+
+```{r task7, include=solution}
+# Create the dataset 
+SSRC_data_C2_task_7 <- select(SSRC_data, age, bmi)
+
+# Check out dataset
+head(SSRC_data_C2_task_7)
+
+```
+
+### Task 8
+Create a dataset that only contains subjects with a bmi below 18.5 and call this dataset _SSRC_data_C2_task_8_. Check out the first six rows of this dataset.
+
+```{r task8, include=solution}
+# Create the dataset 
+SSRC_data_C2_task_8 <- filter(SSRC_data, bmi < 18.5)
+
+# Check out dataset
+head(SSRC_data_C2_task_8)
+```
+
+### Task 9
+Create a dataset that only contains individuals that have a low level of education and a bmi above 25 and call this dataset _SSRC_data_C2_task_9_. Check out the first six rows of this dataset.
+
+```{r task9, include=solution}
+# Create the dataset
+SSRC_data_C2_task_9 <- filter(SSRC_data, education_level == "low" & bmi > 25)
+
+# Check out dataset
+head(SSRC_data_C2_task_9)
+```
+
+### Task 10
+Create a dataset that only contains individuals with a bmi between 18.5 and 25 and is restricted to the variables _bmi_ and _gender_. Use the Pipe operator to do so and call the dataset _SSRC_data_C2_task_10_. Check out the first six rows of this dataset.
+
+```{r task10, include=solution}
+# Create the dataset 
+SSRC_data_C2_task_10 <- SSRC_data %>% 
+                        filter(bmi >= 18.5 & bmi <= 25) %>% 
+                        select(bmi, gender)
+
+# Check out dataset
+head(SSRC_data_C2_task_10)
+```
+
+## Deriving information 
+
+### Task 11
+Use the summarize() command in combination with the filter() command to calculate the mean, maximum and minimum bmi of males that feature a low level of physical activity.
+
+```{r task12, include=solution}
+# Calculate mean, maximum and minimum bmi 
+SSRC_data %>% 
+  filter(gender == "male" & physical_activity_level == "low") %>% 
+  summarize(mean_bmi = mean(bmi), maximum_bmi = max(bmi), minimum_bmi = min(bmi))
+```
+
+### Task 12
+Use the summarize() command in combination with the group_by() command to compare males and females with respect to their mean age and bmi. 
+
+```{r task13, include=solution}
+# Compare males and females with respect to age and bmi 
+SSRC_data %>% 
+  group_by(gender) %>% 
+  summarize(mean_bmi = mean(bmi), mean_age = mean(age))
+```
+
+
+

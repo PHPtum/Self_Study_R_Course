@@ -1,0 +1,21 @@
+---
+title: "C1 - Instructions"
+description: |
+  Instructions for chapter 1: "Getting Started" 
+output:
+  distill::distill_article:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+To access the **instructions document**, please click here: 
+[C1 - Instructions](instruction_documents/SSRC_C1_Instructions.pdf) 
+
+
+To access the **R script template**, please click here: 
+[C1 - R Script Template](templates/SSRC_C1_template.R)

@@ -1,0 +1,45 @@
+---
+title: "C8 - Case Study"
+description: |
+  Information and resources regarding the case study concluding the SSRC
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Introduction
+
+In this chapter you have the opportunity to do a small data analytics project completely on your own by solving a case study.
+
+All the relevant material is provided below in the resource section.
+
+### Preliminary remarks
+
+After completing the preceding 7 chapters of the SSRC, you should now be able to solve the case study. All concepts and commands you need for solving the case study were covered in the SSRC. 
+
+While solving the case study, it is absolutely legitimate to go back to the material of the preceding chapters to look up the commands needed. Sometimes it might be more efficient to google, though! 
+
+A sample solution for the case study is also available. If you are stuck, you can take a look at the solution while you are working on the case study. However, this should be the very last thing to do. It is rather recommended, to compare your solution to the sample solution after completing all the tasks.
+
+### Material
+
+To access the **case study**, please click here: 
+[C8 - Case Study](instruction_documents/SSRC_C8_case_study.pdf) 
+
+To access **dataset 1**, please click here: 
+[Case Study Data 1](data/SSRC_dataset_case_study_1.csv)
+
+To access **dataset 2**, please click here: 
+[Case Study Data 2](data/SSRC_dataset_case_study_2.csv)
+
+To access the **sample solution**, please click here: 
+[C8 - Sample Solution](C8_material/SSRC_C8_case_study_solution.html)
+
+
