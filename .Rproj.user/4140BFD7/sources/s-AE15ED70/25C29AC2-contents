@@ -1,0 +1,18 @@
+---
+title: "C2 - Instructions"
+description: |
+  Instructions for chapter 2: "Data Analysis Basics" 
+output:
+  distill::distill_article:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+To access the **instructions document**, please click here: 
+[C2 - Instructions](instruction_documents/SSRC_C2_Instructions.pdf) 
+
