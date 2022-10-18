@@ -64,7 +64,7 @@ The SSRC consists of eight chapters that are building up on each other. Each cha
 7. R Markdown
 8. Case Study 
 
-All chapters (except chapter 8) are structured in the same way. At the core of each chapter is an **exercise sheet** you are supposed to solve throughout the chapter. An instructions document that is provided in the sub-tab "Introduction and Resources" guides you through the process of completing the respective exercise sheet. The **instructions document** tells you step by step what you have to do to solve the exercise sheet. Usually you will be asked to e.g. watch a YouTube video that teaches you the R skills that are needed to solve the subsequent task(s) of the exercise sheet. In a next step, you will then be asked to solve exactly those tasks. 
+All chapters (except chapter 8) are structured in the same way. At the core of each chapter is an **exercise sheet** you are supposed to solve throughout the chapter. An instructions document that is provided in the sub-tab "Instructions" guides you through the process of completing the respective exercise sheet. The **instructions document** tells you step by step what you have to do to solve the exercise sheet. Usually you will be asked to e.g. watch a YouTube video that teaches you the R skills that are needed to solve the subsequent task(s) of the exercise sheet. In a next step, you will then be asked to solve exactly those tasks. 
 
 To make the process of solving the exercise sheets more convenient, we also provide an **R-script template** for each exercise sheet.
 
