@@ -338,7 +338,7 @@ cvd_risk_classification <- function(age_input = 50,
    risk_score <- predict(logit_mod_boot, newdata = data_new, type = "response")
   
   # Create recommendation variable 
-   recommendation <- if_else(risk_score > 0.2, "Offer Life Style Change Program", "No Action Needed") 
+   recommendation <- if_else(risk_score > 0.1, "Offer Life Style Change Program", "No Action Needed") 
   
   # Output recommendation 
    print(recommendation)

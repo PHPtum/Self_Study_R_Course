@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -457,7 +458,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -788,6 +789,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1860,15 +1862,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2067,7 +2075,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2216,39 +2224,39 @@ C7 - R Markdown
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#getting-ready">Getting ready</a>
+<li><a href="#getting-ready" id="toc-getting-ready">Getting ready</a>
 <ul>
-<li><a href="#task-1">Task 1</a></li>
-<li><a href="#task-2">Task 2</a></li>
-<li><a href="#task-3">Task 3</a></li>
-<li><a href="#task-4">Task 4</a></li>
-<li><a href="#task-5">Task 5</a></li>
-<li><a href="#task-6">Task 6</a></li>
-<li><a href="#task-7">Task 7</a></li>
+<li><a href="#task-1" id="toc-task-1">Task 1</a></li>
+<li><a href="#task-2" id="toc-task-2">Task 2</a></li>
+<li><a href="#task-3" id="toc-task-3">Task 3</a></li>
+<li><a href="#task-4" id="toc-task-4">Task 4</a></li>
+<li><a href="#task-5" id="toc-task-5">Task 5</a></li>
+<li><a href="#task-6" id="toc-task-6">Task 6</a></li>
+<li><a href="#task-7" id="toc-task-7">Task 7</a></li>
 </ul></li>
-<li><a href="#functions">Functions</a>
+<li><a href="#functions" id="toc-functions">Functions</a>
 <ul>
-<li><a href="#task-8">Task 8</a></li>
-<li><a href="#task-9">Task 9</a></li>
-<li><a href="#task-10">Task 10</a></li>
-<li><a href="#task-11">Task 11</a></li>
-<li><a href="#task-12">Task 12</a></li>
-<li><a href="#task-13">Task 13</a></li>
+<li><a href="#task-8" id="toc-task-8">Task 8</a></li>
+<li><a href="#task-9" id="toc-task-9">Task 9</a></li>
+<li><a href="#task-10" id="toc-task-10">Task 10</a></li>
+<li><a href="#task-11" id="toc-task-11">Task 11</a></li>
+<li><a href="#task-12" id="toc-task-12">Task 12</a></li>
+<li><a href="#task-13" id="toc-task-13">Task 13</a></li>
 </ul></li>
-<li><a href="#loops">Loops</a>
+<li><a href="#loops" id="toc-loops">Loops</a>
 <ul>
-<li><a href="#task-14">Task 14</a></li>
-<li><a href="#task-15">Task 15</a></li>
-<li><a href="#task-16">Task 16</a></li>
+<li><a href="#task-14" id="toc-task-14">Task 14</a></li>
+<li><a href="#task-15" id="toc-task-15">Task 15</a></li>
+<li><a href="#task-16" id="toc-task-16">Task 16</a></li>
 </ul></li>
-<li><a href="#bootstrap">Bootstrap</a>
+<li><a href="#bootstrap" id="toc-bootstrap">Bootstrap</a>
 <ul>
-<li><a href="#task-17">Task 17</a></li>
-<li><a href="#task-18">Task 18</a></li>
-<li><a href="#task-19">Task 19</a></li>
-<li><a href="#task-20">Task 20</a></li>
-<li><a href="#task-21">Task 21</a></li>
-<li><a href="#task-22">Task 22</a></li>
+<li><a href="#task-17" id="toc-task-17">Task 17</a></li>
+<li><a href="#task-18" id="toc-task-18">Task 18</a></li>
+<li><a href="#task-19" id="toc-task-19">Task 19</a></li>
+<li><a href="#task-20" id="toc-task-20">Task 20</a></li>
+<li><a href="#task-21" id="toc-task-21">Task 21</a></li>
+<li><a href="#task-22" id="toc-task-22">Task 22</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2540,8 +2548,8 @@ C7 - R Markdown
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Apply function to the bootstrap dataset</span></span>
 <span><span class='fu'>bmi_pred_funct</span><span class='op'>(</span>data_input <span class='op'>=</span> <span class='va'>SSRC_data_bootstrap</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>       1 
-25.94976 </code></pre>
+<pre><code>      1 
+26.1388 </code></pre>
 </div>
 <h3 id="task-20">Task 20</h3>
 <p>Use a for loop to repeat what you did in tasks 18/19 1000 times. Store the results in a vector called <em>bmi_pred_boot</em>. Check out the <em>bmi_pred_boot</em> vector.</p>
@@ -2563,7 +2571,7 @@ C7 - R Markdown
 <span><span class='co'># Check out the vector</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 26.07499 26.37376 25.71273 25.60832 25.84868 26.12393</code></pre>
+<pre><code>[1] 25.57309 25.74069 25.52154 25.36548 25.79645 25.64298</code></pre>
 </div>
 <h3 id="task-21">Task 21</h3>
 <p>Create a histogram to analyse the distribution of <em>bmi_pred_boot</em> vector. (Just use <em>hist()</em> from the base R package)</p>
@@ -2581,18 +2589,18 @@ C7 - R Markdown
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate mean</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 25.82796</code></pre>
+<pre><code>[1] 25.82671</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate standard deviation</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 0.3363086</code></pre>
+<pre><code>[1] 0.3276834</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate quantiles</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span>, probs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>    2.5%    97.5% 
-25.15336 26.52420 </code></pre>
+25.20686 26.43645 </code></pre>
 </div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
