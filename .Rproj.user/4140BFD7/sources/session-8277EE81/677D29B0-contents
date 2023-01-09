@@ -12,7 +12,6 @@ output:
     fig_caption: true
 ---
 
-
 ### Load Data and Packages
 
 #### Load Packages

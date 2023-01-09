@@ -1,18 +1,3 @@
----
-title: 'SSRC: Exercise Chapter 7 - Model'
-output:
-  html_document:
-    theme: journal
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    toc_depth: 5
-    number_sections: false
-    fig_caption: true
----
-
-
 ### Load Data and Packages
 
 #### Load Packages

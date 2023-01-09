@@ -1,0 +1,14 @@
+---
+title: 'PHP SSRC: Exercise Chapter 7 - Solution'
+output:
+  html_document:
+    theme: journal
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 5
+    number_sections: false
+    fig_caption: true
+---
+
