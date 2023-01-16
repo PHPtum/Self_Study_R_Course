@@ -20,7 +20,7 @@ solution = F
 Create an R project for solving this Exercise Sheet. 
 
 #### Task 2
-Download the csv-file [SSRC_data.csv](data/SSRC_data.csv) and the rmd-file [SSRC_7_template.rmd](templates/SSRC_C7_template.Rmd) and put it in the R project folder you created in Task 1.
+Download the csv-file [SSRC_data.csv](data/SSRC_data.csv) and the rmd-file [SSRC_7_template.rmd](https://github.com/PHPtum/PHP_teaching_material/blob/main/SSRC_Material/C7_material/SSRC_C7_template.Rmd) and put it in the R project folder you created in Task 1.
 
 #### Task 3 
 Open the _SSRC_C7_template.rmd_ file.
