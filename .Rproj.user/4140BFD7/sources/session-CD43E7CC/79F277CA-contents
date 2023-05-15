@@ -1,0 +1,158 @@
+---
+title: "C3 - Exercise Sheet"
+description: |
+  Here you find the exercise sheet for chapter 3: "Data Manipulation"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+solution = F
+```
+
+
+## Start a project and import data 
+### Task 1
+Create an R project for solving this Exercise Sheet. 
+
+### Task 2
+Download the csv-file [_SSRC_data.csv_](data/SSRC_data.csv) and the R script [_SSRC_C3_template.R_](templates/SSRC_C3_template.R) and put it in the R project folder you created in Task 1.
+
+### Task 3 
+Open the _SSRC_C3_template.R_ R Script.
+
+### Task 4 
+Use the _read.csv()_ command to load the SSRC data into R and call the respective data object _SSRC_data_.
+
+```{r task4, include=solution}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Task 5
+Get a first impression of the dataset by checking out the first 6 rows of the dataset.
+
+```{r task5, include=solution}
+# Check out the first 6 rows
+head(SSRC_data)
+
+```
+
+### Task 6
+Install and load the _tidyverse_ package. 
+(If you have already installed the package before, loading the package is sufficient)
+
+```{r task6, include=solution}
+# Install tidyverse package (if you have not done it yet)
+# install.packages("tidyverse")
+
+# Load tidyverse package
+library("tidyverse")
+
+```
+## The mutate() command
+### Task 7
+Create a new variable that contains the age of an individual in months. Call the variable _age_in_months_ and add it to the SSRC dataset. Check out the first six rows of the dataset after creating this new variable. 
+
+```{r task11, include=solution}
+# Add variable to the SSRC dataset 
+SSRC_data <- mutate(SSRC_data, age_in_months = 12*age)
+
+# Check out dataset
+head(SSRC_data)
+```
+## Check variable types
+### Task 8
+Use the str() command to check the variable types in the SSRC data. 
+
+```{r task14, include=solution}
+# Check variable types
+str(SSRC_data)
+```
+## Factor and Indicator Variables
+### Task 9
+Transform the variables _gender_, _education_level_ and _physical_activity_level_ into factor variables. Use the str() command to check out whether it worked.
+
+```{r task15, include=solution}
+# Transform into factor variables (without dplyr)
+SSRC_data$gender <- as.factor(SSRC_data$gender)
+SSRC_data$education_level <- as.factor(SSRC_data$education_level)
+SSRC_data$physical_activity_level <- as.factor(SSRC_data$physical_activity_level)
+
+# Transform into factor variables (with dplyr)
+SSRC_data <- mutate(SSRC_data, gender = as.factor(gender),
+                               education_level = as.factor(education_level),
+                               physical_activity_level = as.factor(physical_activity_level))
+
+# Check whether it worked 
+str(SSRC_data)
+```
+
+### Task 10
+Check the level order of the variable _physical_activity_level_  and adjust it if necessary to "low", "medium, "high".  
+
+```{r task16, include=solution}
+# Check level ordering
+levels(SSRC_data$physical_activity_level)
+
+# Change order (without forcats package from the tidyverse) 
+SSRC_data$physical_activity_level <- factor(SSRC_data$physical_activity_level, 
+                                            levels = c("low", "medium", "high"))
+
+
+# Change order (with forcats package from the tidyverse) 
+SSRC_data <- mutate(SSRC_data, physical_activity_level = fct_relevel(physical_activity_level, c("low", "medium", "high")))
+
+# Check whether releveling worked
+levels(SSRC_data$physical_activity_level)
+
+```
+
+### Task 11
+Use the mutate() command to create a logical variable indicating whether an individual has a bmi larger than 25 and call this variable _overweight_indicator_. Check the class of the new variable using the class() and str() command.  
+
+```{r task17, include=solution}
+# Create overweight indicator
+SSRC_data <- mutate(SSRC_data, overweight_indicator = bmi > 25)
+
+# Check class of overweight indicator
+class(SSRC_data$overweight_indicator)
+str(SSRC_data$overweight_indicator)
+```
+
+### Task 12
+Change the name of the variable _gender_ into _sex_. Use the str() command to check whether it worked. 
+
+```{r task18, include=solution}
+# Rename variable
+SSRC_data <- rename(SSRC_data, sex = gender)
+
+# Check whether it worked
+str(SSRC_data)
+```
+
+### Task 13
+Create a new factor variable that indicates whether an individual is "underweight" (bmi < 18.5), "normal" (bmi between 18.5 and 25) or "overweight" (bmi > 25). Call this variable _weight_category_. Use the str() and head() command to check out whether it worked out.
+
+```{r task19, include=solution}
+# Create weight_category variable
+SSRC_data <- SSRC_data %>% 
+              mutate(weight_category = ifelse(bmi < 18.5, "underweight", 
+                                              ifelse(bmi > 25, "overweight", "normal"))) %>% 
+              mutate(weight_category = as_factor(weight_category))
+
+# There are many different ways to do this. This is only one of it. 
+# Another useful command to create categorical varibles with multiple levels from a numerical variable is the cut() command.
+
+# Check whether it worked
+head(SSRC_data)
+str(SSRC_data)
+```
+
+

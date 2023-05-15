@@ -1,0 +1,335 @@
+###############################################################
+##### Evaluation Methods in Public Health and Health Care #####
+#####                 Block 6 - Session 5                 #####
+#####                   Code Lecturer                     #####
+###############################################################
+
+#######################################
+##### Load the required packages ######
+#######################################
+library(tidyverse)
+library(EnvStats)
+
+
+setwd("I:/l10/3_Lehre_Public/2 - Evaluation Methods in Public Health/SS_WS_21_22/Block 5 - Ex-Ante Modelling/Session_5_Decision_Trees_Advanced")
+
+#######################################
+##### Write Function ##################
+#######################################
+
+### To facilitate sensitivity analyses, we write a function that takes all probabilities that feed into the DT analysis as input and delivers an effect estimate for the effect of the LI intervention as output.
+
+LI_effect_function <- function(prob_participation = 0.5, 
+                               prob_effect_on_healthy_ls = 0.3,
+                               prob_healthy_ls = 0.4,
+                               prob_obesity_healthy_ls = 0.05,
+                               prob_obesity_not_healthy_ls = 0.3,
+                               costs_obesity = 2000,
+                               costs_no_obesity = 300,
+                               costs_LI = 25){
+
+prob_part <- prob_participation
+
+prob_eff <- prob_effect_on_healthy_ls
+  
+prob_h_ls <- prob_healthy_ls
+
+prob_obe_hea <- prob_obesity_healthy_ls
+  
+prob_obe_not_hea <- prob_obesity_not_healthy_ls
+
+costs_ob <- costs_obesity
+
+costs_no_ob <- costs_no_obesity
+
+costs_li <- costs_LI
+  
+
+# Pathway Porbablities
+
+prob_pw_1 <- prob_part * (prob_h_ls* (1 + prob_eff)) * prob_obe_hea
+  
+prob_pw_2 <- prob_part * (prob_h_ls* (1 + prob_eff)) * (1 - prob_obe_hea)
+
+prob_pw_3 <- prob_part * (1- (prob_h_ls* (1 + prob_eff))) * prob_obe_not_hea
+
+prob_pw_4 <- prob_part * (1- (prob_h_ls* (1 + prob_eff))) * (1-prob_obe_not_hea)
+
+prob_pw_5 <- (1 - prob_part) * prob_h_ls * prob_obe_hea
+
+prob_pw_6 <- (1 - prob_part) * prob_h_ls * (1 - prob_obe_hea)
+
+prob_pw_7 <- (1 - prob_part) * (1- prob_h_ls) * prob_obe_not_hea
+
+prob_pw_8 <- (1 - prob_part) * (1- prob_h_ls) * (1-prob_obe_not_hea)
+
+prob_pw_9 <- prob_h_ls * prob_obe_hea
+
+prob_pw_10 <- prob_h_ls * (1 - prob_obe_hea)
+
+prob_pw_11 <- (1- prob_h_ls) * prob_obe_not_hea
+
+prob_pw_12 <- (1- prob_h_ls) * (1-prob_obe_not_hea) 
+
+
+# Outcomes
+  
+outcome_1 <- costs_ob + costs_li
+  
+outcome_2 <- costs_no_ob + costs_li
+  
+outcome_3 <- costs_ob + costs_li
+
+outcome_4 <- costs_no_ob + costs_li 
+  
+outcome_5 <- costs_ob
+   
+outcome_6 <- costs_no_ob
+
+outcome_7 <- costs_ob
+  
+outcome_8 <- costs_no_ob
+  
+outcome_9 <- costs_ob
+  
+outcome_10 <- costs_no_ob
+  
+outcome_11 <- costs_ob
+   
+outcome_12 <- costs_no_ob
+
+
+# Expected Values
+
+EV_1 <- prob_pw_1 * outcome_1
+
+EV_2 <- prob_pw_2 * outcome_2
+
+EV_3 <- prob_pw_3 * outcome_3
+
+EV_4 <- prob_pw_4 * outcome_4
+
+EV_5 <- prob_pw_5 * outcome_5
+
+EV_6 <- prob_pw_6 * outcome_6
+
+EV_7 <- prob_pw_7 * outcome_7
+
+EV_8 <- prob_pw_8 * outcome_8
+
+EV_9 <- prob_pw_9 * outcome_9
+
+EV_10 <- prob_pw_10 * outcome_10
+
+EV_11 <- prob_pw_11 * outcome_11
+
+EV_12 <- prob_pw_12 * outcome_12
+
+# Compare strategies
+
+prob_obesity_with_LI <- EV_1 + EV_2 + EV_3 + EV_4 + EV_5 + EV_6 + EV_7 + EV_8 
+
+prob_obesity_without_LI <- EV_9 + EV_10 + EV_11 + EV_12
+
+LI_effect <- prob_obesity_with_LI - prob_obesity_without_LI 
+
+return(LI_effect)
+
+}
+
+LI_effect_function()
+
+
+#######################################
+##### Sensitivity analysis ############
+#######################################
+
+#################
+### Single ######
+#################
+
+### Probability of participation
+
+prob_participation_vector <- c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
+
+results_single_participation <- numeric(length(prob_participation_vector))
+
+for ( i in 1:length(results_single_participation)){
+  
+  results_single_participation[i] <- LI_effect_function(prob_participation = prob_participation_vector[i])
+  
+}
+
+data_sens_part <- data.frame("participation_rate" = prob_participation_vector,
+                             "effect_of_LI" = results_single_participation)
+
+
+plot_1 <- ggplot(data = data_sens_part, mapping = aes(x = participation_rate, y = effect_of_LI)) +
+  geom_line() + 
+  geom_point() +
+  labs(x = "Participation Rate",  y = "Effect of LI on Expected Costs", title ="Single Sensititivity Analysis - Participation Rate") +
+  scale_x_continuous(limits=c(0,1), breaks = c(0,0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,1)) +
+  scale_y_continuous(limits=c(-25,0), breaks = c(-25,-20, -15, -10, -5, 0))+
+  theme_bw()
+
+pdf("Figure_participation.pdf", width = 8, height = 5)
+print(plot_1)
+dev.off()
+
+ggplot(data = data_sens_part, mapping = aes(x = participation_rate, y = effect_of_LI)) +
+  labs(x = "Participation Rate",  y = "Effect of LI on Expected Costs", title ="Single Sensititivity Analysis - Participation Rate") +
+  scale_x_continuous(limits=c(0,1), breaks = c(0,0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,1)) +
+  scale_y_continuous(limits=c(-25,0), breaks = c(-25,-20, -15, -10, -5, 0))+
+  theme_bw()
+
+#################
+### Multiway ####
+#################
+
+##### Like in the T?bbicke et al. 2012 paper
+
+# Create vectors with the relevant values for the probability of participation and the effect on healthy lifestyle parameters
+
+prob_participation_vector <- c(0.1, 0.5, 0.9)
+
+prob_effect_on_healthy_ls_vector <- c(0.1, 0.3, 0.6)
+
+
+# Use for loops to create a outcome vector that includes all the estimates
+
+LI_effect_estimates <- capture.output(for (i in 1:length(prob_participation_vector)){
+
+                      for (j in 1:length(prob_effect_on_healthy_ls_vector)){  
+    
+                        x <- LI_effect_function(prob_participation = prob_participation_vector[i], prob_effect_on_healthy_ls = prob_effect_on_healthy_ls_vector[j])
+                        cat(x, "\n")
+
+}
+}
+)
+    
+LI_effect_estimates <- as.numeric(LI_effect_estimates)
+ 
+LI_effect_estimates <- data.frame("estimates" = LI_effect_estimates)
+
+LI_effect_estimates <- mutate(LI_effect_estimates, constant = 0)
+
+# Analyze the outcomes vector
+  
+# Just Point estimates
+plot_2 <- ggplot(data = LI_effect_estimates, mapping = aes(x = estimates, y = constant)) +
+  geom_point(size = 3)+
+  theme_classic()+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())+
+  labs(x = "Effect of LI on Expected Costs", title ="Multiway Sensititivity Analysis - Min, Mean and Max Approach") +
+  geom_hline(yintercept = 0, linetype = "dashed")+
+  scale_x_continuous(limits=c(-70,10), breaks = c(-70, -60, -50, -40, -30, -20, -10, 0, 10))
+
+pdf("Figure_multiway_min_max.pdf", width = 8, height = 3)
+print(plot_2)
+dev.off()
+
+# Mean
+mean(LI_effect_estimates$estimates)
+         
+# Standard Deviation
+sd(LI_effect_estimates$estimates)
+         
+##### By drawing from distributions
+
+set.seed(1234)
+
+
+### Using a uniform distribution
+
+LI_effect_estimates_dist <- numeric(10000)
+
+for ( i in 1:length(LI_effect_estimates_dist)){
+  
+  participation <- runif(1, min = 0.1, max = 0.9)
+  
+  effect <- runif(1, min = 0.1, max = 0.5)
+  
+  x <- LI_effect_function(prob_participation = participation, prob_effect_on_healthy_ls = effect)
+  
+  LI_effect_estimates_dist[i] <- x
+  
+}
+
+LI_effect_estimates_dist <- as.data.frame(LI_effect_estimates_dist)
+
+
+# Histogram 
+plot_4 <- ggplot(data = LI_effect_estimates_dist, mapping = aes(x = LI_effect_estimates_dist)) +
+  theme_classic()+
+  geom_histogram(color= "black", fill="grey")+
+  geom_vline(xintercept = 0, linetype = "dashed")+
+  labs(x = "Estimates for the Effect of LI on Expected Costs", title ="Multiway Sensititivity Analysis - Uniform Distribution") 
+
+# Mean
+mean(LI_effect_estimates_dist$LI_effect_estimates_dist)
+
+# Standard Deviation
+sd(LI_effect_estimates_dist$LI_effect_estimates_dist)
+
+# Calculate quantiles
+quantile(LI_effect_estimates_dist$LI_effect_estimates_dist, probs = c(0.025, 0.975))
+
+# Want percentage of the estimates is smaller than -0.01
+LI_effect_estimates_dist_sub <- subset(LI_effect_estimates_dist, LI_effect_estimates_dist < 0)
+1- nrow(LI_effect_estimates_dist_sub)/nrow(LI_effect_estimates_dist)
+
+
+### Using a beta distribution
+
+LI_effect_estimates_dist <- numeric(10000)
+
+for ( i in 1:length(LI_effect_estimates_dist)){
+  
+  participation <- rbeta(1, shape1 = 5, shape2 = 5)
+  
+  effect <- rbeta(1, shape1 = 8, shape2 = 19)
+  
+  x <- LI_effect_function(prob_participation = participation, prob_effect_on_healthy_ls = effect)
+  
+  LI_effect_estimates_dist[i] <- x
+  
+}
+
+LI_effect_estimates_dist <- as.data.frame(LI_effect_estimates_dist)
+
+
+# Histogram 
+plot_5 <- ggplot(data = LI_effect_estimates_dist, mapping = aes(x = LI_effect_estimates_dist)) +
+  theme_classic()+
+  geom_histogram(color= "black", fill="grey")+
+  geom_vline(xintercept = 0, linetype = "dashed")+
+  labs(x = "Estimates for the Effect of LI on Expected Costs", title ="Multiway Sensititivity Analysis - Beta Distribution") 
+
+# Mean
+mean(LI_effect_estimates_dist$LI_effect_estimates_dist)
+
+# Standard Deviation
+sd(LI_effect_estimates_dist$LI_effect_estimates_dist)
+
+# Calculate quantiles
+quantile(LI_effect_estimates_dist$LI_effect_estimates_dist, probs = c(0.025, 0.975))
+
+# Want percentage of the estimates is smaller than -0.01
+LI_effect_estimates_dist_sub <- subset(LI_effect_estimates_dist, LI_effect_estimates_dist < 0 )
+1-nrow(LI_effect_estimates_dist_sub)/nrow(LI_effect_estimates_dist)
+
+### Create plots
+
+pdf("Figure_uniform.pdf", width = 8, height = 5)
+print(plot_4)
+dev.off()
+
+pdf("Figure_beta.pdf", width = 8, height = 5)
+print(plot_5)
+dev.off()
+
+
+

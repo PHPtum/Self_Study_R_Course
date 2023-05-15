@@ -16,7 +16,7 @@ output:
 
 #### Load Packages
 
-```{r eval=TRUE, message=FALSE}
+```{r eval=TRUE, message=FALSE, warning=FALSE}
 # Load tidyverse package
 library("tidyverse")
 
@@ -59,8 +59,8 @@ In the following, we will analyze the distribution of [BMI](https://en.wikipedia
 
 ```{r}
 # Create histogram
-ggplot(data = SSRC_data) +
-  geom_histogram(mapping = aes(x = bmi))
+ggplot(data = SSRC_data, mapping = aes(x = bmi)) +
+  geom_histogram()
 
 ```
 
@@ -68,8 +68,8 @@ ggplot(data = SSRC_data) +
 
 ```{r}
 # Create density plot
-ggplot(data = SSRC_data) +
-  geom_density(mapping = aes(x = bmi))
+ggplot(data = SSRC_data, mapping = aes(x = bmi)) +
+  geom_density()
 
 ```
 
@@ -84,8 +84,8 @@ In the following, we will analyze the distribution of age graphically by means o
 
 ```{r echo=FALSE, message=FALSE}
 # Create histogram
-ggplot(data = SSRC_data) +
-  geom_histogram(mapping = aes(x = age))
+ggplot(data = SSRC_data, mapping = aes(x = age)) +
+  geom_histogram()
 
 ```
 
@@ -93,7 +93,7 @@ ggplot(data = SSRC_data) +
 
 ```{r echo = FALSE}
 # Create density plot
-ggplot(data = SSRC_data) +
-  geom_density(mapping = aes(x = age))
+ggplot(data = SSRC_data, mapping = aes(x = age)) +
+  geom_density()
 
 ```

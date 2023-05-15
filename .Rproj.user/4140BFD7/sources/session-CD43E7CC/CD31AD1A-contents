@@ -1,0 +1,78 @@
+---
+title: "FAQ"
+description: |
+  Frequently asked questions are answered on this site
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: false
+    toc_depth: 4
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### I have a question regarding the mechanics of the Self-Study R Course. What shall I do?
+
+If you have a question on how to work with the SSRC, then please first check the FAQs. If you do not find a solution to your problem there, then please send an e-mail with the subject "SSRC" to [php@sg.tum.de](mailto:php@sg.tum.de). We will then try to complement the FAQs accordingly.
+
+### I have a question regarding the sample solution. What shall I do?
+
+If you think that the sample solution is somewhat confusing or even wrong, then please send an e-mail with the subject "SSRC" to [php@sg.tum.de](mailto:php@sg.tum.de). We will try to improve the sample solution based on your feedback.
+
+Unfortunately, we do not have the capacity to provide support if you do not understand a solution or if you have questions that go beyond the sample solution. In such cases, we recommend to do a google research or to watch YouTube videos that are related to your problem/question.
+
+### I found a mistake or bug while doing this course. What shall I do?
+
+If you find a mistake or bug or you have suggestions for improvement, please send an e-mail with the subject "SSRC" to [php@sg.tum.de](mailto:php@sg.tum.de).
+
+### A link in the instructions document does not work or does not make sense. What shall I do?
+
+If one of the links in an instrcution document does not work anymore or directs you to a video/website that does not make sense in this context, then please send an e-mail with the subject "SSRC" to [php@sg.tum.de](mailto:php@sg.tum.de).
+
+### How can I download R-scripts, html-files, etc. from the website on my computer? 
+
+Just make a right click on the respective link and then select "save target as..." / "Ziel speichern unter...".
+
+### Do I have to pay for this course? 
+
+No, this course is completely free of charge and there are also no other strings attached.
+
+### I am a lecturer at a different university/school. May I integrate the SSRC in my teaching?
+
+Yes, this is not a problem at all and we are happy if you do so!
+
+We created this course for the purpose of teaching our students R at TU Munich and still use it intensely for this purpose.  
+
+Based on our experience with the SSRC we recommend lecturers to offer Q&A sessions accompanying the SSRC where students can approach you if they have technical problems or clarifying questions regarding the sample solution.
+
+If you actually use the SSRC for your teaching, it would be great if you could share your experience with us afterwards.
+
+### I like this course. What shall I do?
+
+We are glad that you like the course and hope that you learned a lot while doing it! 
+
+If you liked the course, you could help us to raise the awareness of the SSRC by
+
+* following us on twitter ([TUMPublicHealth](https://twitter.com/TUMPublicHealth)) 
+* twittering something positive a about the SSRC (\#SSRC) referencing our twitter account 
+* spreading the word among your peers and people who might be interested in the SSRC
+
+Thanks!
+
+### I do not like this course. What shall I do?
+
+If you did not like the course, it would be great if you could tell us why. If you can also provide suggestions for improvements, we would be very happy.
+
+To provide your us with your feedback, please send an email with the subject "SSRC" to [php@sg.tum.de](mailto:php@sg.tum.de)
+
+
+
+
+
+
+
+
+
