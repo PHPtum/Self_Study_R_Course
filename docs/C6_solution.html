@@ -2551,8 +2551,8 @@ C8 Case Study
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Apply function to the bootstrap dataset</span></span>
 <span><span class='fu'>bmi_pred_funct</span><span class='op'>(</span>data_input <span class='op'>=</span> <span class='va'>SSRC_data_bootstrap</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>       1 
-25.49311 </code></pre>
+<pre><code>     1 
+25.798 </code></pre>
 </div>
 <h3 id="task-20">Task 20</h3>
 <p>Use a for loop to repeat what you did in tasks 18/19 1000 times. Store the results in a vector called <em>bmi_pred_boot</em>. Check out the <em>bmi_pred_boot</em> vector.</p>
@@ -2574,7 +2574,7 @@ C8 Case Study
 <span><span class='co'># Check out the vector</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 25.98121 25.84523 25.73814 25.71965 26.19229 25.50647</code></pre>
+<pre><code>[1] 26.15965 26.40788 25.43387 25.90707 25.33383 25.23550</code></pre>
 </div>
 <h3 id="task-21">Task 21</h3>
 <p>Create a histogram to analyse the distribution of <em>bmi_pred_boot</em> vector. (Just use <em>hist()</em> from the base R package)</p>
@@ -2592,18 +2592,18 @@ C8 Case Study
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate mean</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 25.80158</code></pre>
+<pre><code>[1] 25.82344</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate standard deviation</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 0.3339716</code></pre>
+<pre><code>[1] 0.32833</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate quantiles</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>bmi_pred_boot</span>, probs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>    2.5%    97.5% 
-25.14980 26.48699 </code></pre>
+25.21180 26.44597 </code></pre>
 </div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

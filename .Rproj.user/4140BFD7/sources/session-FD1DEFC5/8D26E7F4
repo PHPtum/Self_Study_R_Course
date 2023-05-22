@@ -1,26 +1,26 @@
 {
-    "id": "C8FAD534",
-    "path": "I:/l10/3_Lehre_Public/10 - R Kurs/Self_Study_R_Course/FAQ.Rmd",
-    "project_path": "FAQ.Rmd",
+    "id": "8D26E7F4",
+    "path": "I:/l10/3_Lehre_Public/10 - R Kurs/Self_Study_R_Course/C4_instructions.Rmd",
+    "project_path": "C4_instructions.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "3397320739",
     "contents": "",
     "dirty": false,
-    "created": 1684135156822.0,
+    "created": 1684746209495.0,
     "source_on_save": false,
     "relative_order": 10,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "72,0",
-        "scrollLine": "53"
+        "cursorPosition": "112,11",
+        "scrollLine": "100"
     },
     "folds": "",
-    "lastKnownWriteTime": 1684135177,
+    "lastKnownWriteTime": 1684746767,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1684135179035,
+    "last_content_update": 1684746769394,
     "read_only": false,
     "read_only_alternatives": []
 }

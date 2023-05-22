@@ -5,7 +5,7 @@ description: |
 output:
   distill::distill_article:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
     number_sections: false
 ---
 
@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-### Introduction 
+## Introduction 
 
 In this chapter you will
 
@@ -22,6 +22,8 @@ In this chapter you will
 * Learn how to use R as a calculator 
 
 To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions below will guide you through the process of solving the exercise sheet. 
+
+## First Steps
 
 ### Step 1
 
@@ -56,6 +58,8 @@ Open RStudio by yourself.
 
 Briefly check out the [exercise sheet](C1_exercise.html){target="blank"} for chapter 1 to get an impression of what you need to learn/know to solve it.
 
+## R as a calculator
+
 ### Step 7
 
 Watch the following YouTube Video: 
@@ -72,6 +76,8 @@ Download and open the R -Script template to insert your solutions in RStudio:
 
 Solve Task 1-4 of the exercise sheet.
 
+## Basic R programming 
+
 ### Step 10
 
 Do the “Programming Basics” Tutorial offered in the Posit Cloud: 
@@ -87,7 +93,7 @@ Finish exercise sheet 1 and save the solution on your computer.
 
 Compare your solutions to the [sample solution](C1_solution.html){target="blank"} for exercise sheet 1.
 
-### Additional Resources
+## Additional Resources
 
 [Website: R as a calculator](http://statseducation.com/Introduction-to-R/modules/getting started/calculator/){target="blank"} -> Nice overview of the most important mathematical and logical operators
 
