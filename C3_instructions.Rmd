@@ -48,7 +48,7 @@ Do the “mutate” subchapter of the “Deriving Information with dplyr” tuto
 
 Solve task 7 of the exercise sheet.
 
-## Variable types
+## Manipulating variables
 
 ### Step 5
 
