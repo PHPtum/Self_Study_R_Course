@@ -22,11 +22,11 @@ Since your supervisor is always very busy, she assigned you to do this analytics
 
 **Dataset 1:** [SSRC_dataset_case_study_1.csv](data/SSRC_dataset_case_study_1.csv){target="blank"}
 
-![Codebook Dataset 1](C8_material/C8_description_dataset_1.png)
+![Codebook Dataset 1](C8_material/C8_description_dataset_1.JPG)
 
 **Dataset 2:** [SSRC_dataset_case_study_2.csv](data/SSRC_dataset_case_study_2.csv){target="blank"}
 
-![Codebook Dataset 2](C8_material/C8_description_dataset_2.png)
+![Codebook Dataset 2](C8_material/C8_description_dataset_2.JPG)
 
 **In your meeting your supervisor told you to complete the following 6 Tasks:**
 

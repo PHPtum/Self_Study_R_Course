@@ -3,7 +3,7 @@
     "path": "I:/l10/3_Lehre_Public/10 - R Kurs/Self_Study_R_Course/C8_case_study.Rmd",
     "project_path": "C8_case_study.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1897837451",
     "contents": "",
     "dirty": false,
     "created": 1696927824487.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "70,10",
-        "scrollLine": "45"
+        "cursorPosition": "28,63",
+        "scrollLine": "25"
     },
     "folds": "",
-    "lastKnownWriteTime": 1683883570,
+    "lastKnownWriteTime": 1696930749,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1683883570,
+    "last_content_update": 1696930752163,
     "read_only": false,
     "read_only_alternatives": []
 }
