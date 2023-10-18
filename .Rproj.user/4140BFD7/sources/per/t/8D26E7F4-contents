@@ -1,0 +1,126 @@
+---
+title: "C4 - Instructions"
+description: |
+  Instructions for chapter 4: "Data Visualization" 
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this chapter you will learn how to create plots with the _ggplot2_ package (part of the tidyverse).
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions below will guide you through the process of solving the exercise sheet.
+
+## Getting ready
+
+### Step 1
+
+Briefly check out the [exercise sheet](C4_exercise.html){target="blank"} for chapter 4 to get an impression of what you need to learn/know to solve it.
+
+### Step 2
+
+Solve Tasks 1-7 of the exercise sheet.
+
+### Step 3
+
+Watch the following YouTube Video: 
+[An Introduction to Data Visualization](https://www.youtube.com/watch?v=HPJn1CMvtmI&list=PLtL57Fdbwb_C6RS0JtBojTNOMVlgpeJkS&index=1){target="blank"}
+
+### Step 4
+
+Do the “Exploratory Data Analysis” tutorial offered in the posit Cloud:
+[Exploratory Data Analysis](https://posit.cloud/learn/primers/3.1){target="blank"}
+
+### Step 5
+
+Solve task 8 of the exercise sheet.
+
+## Bar charts
+
+### Step 6
+
+Do the “Bar Charts” tutorial offered in the posit Cloud:
+[Bar Charts](https://posit.cloud/learn/primers/3.2){target="blank"}
+
+**Comment:** It is sufficient if you focus on the subchapters “Bar Charts” and “Aesthetics”. 
+
+### Step 7
+
+Solve tasks 9-10 of the exercise sheet.
+
+## Histograms
+
+### Step 8
+
+Do the “Histograms” tutorial offered in the RStudio Cloud: 
+[Histograms](https://rstudio.cloud/learn/primers/3.3){target="blank"}
+
+**Comment:** It is sufficient to focus on the subchapter “Histograms”.
+
+### Step 9
+
+Solve tasks 11-12 of the exercise sheet.
+
+## Denistiy Plots
+
+### Step 10
+
+Watch the following Video: 
+[Density Plots](https://www.youtube.com/watch?v=UGeJ73k6BGs){target="blank"}
+
+Solve tasks 13-14.
+
+## Boxplots
+
+### Step 11
+
+Watch the following Video: 
+[Boxplots](https://www.youtube.com/watch?v=EZjkg_hsh-w&list=PLkrJrLs7xfbVbI1WHs8FfkOoFvtiI6EXd&index=8){target="blank"}
+
+Solve task 15.
+
+## Scatterplots
+
+### Step 12
+
+Watch the following Video: 
+[Scatter Plots](https://www.youtube.com/watch?v=DjORoUDMLD4&list=PLkrJrLs7xfbVbI1WHs8FfkOoFvtiI6EXd&index=10){target="blank"}
+
+Solve task 16.
+
+### Step 13
+
+Watch the following Video:
+[Smoother](https://www.youtube.com/watch?v=P2_qYBV1Byc&list=PLkrJrLs7xfbVbI1WHs8FfkOoFvtiI6EXd&index=11){target="blank"}
+
+Solve task 17.
+
+### Step 14
+
+Watch the following Video:
+[Draw Lines](https://www.youtube.com/watch?v=dD51z8MN1GI){target="blank"}
+
+Solve Task 18.
+
+### Step 15
+
+Compare your solutions to the [sample solution](C4_solution.html){target="blank"} for exercise sheet 4.
+
+## Additional Resources
+
+[Cheat Sheet: Data Visualization](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf){target="blank"} -> Nice overview on how to make plots with ggplot2
+
+
+If you want to make your graphs more beautiful and understandable (e.g add a title, change colours), the following resources are recommended:
+
+*	[Tutorial: Customize Plots](https://rstudio.cloud/learn/primers/3.8){target="blank"}
+*	Google!!!
+

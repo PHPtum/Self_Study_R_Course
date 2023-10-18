@@ -1,0 +1,53 @@
+---
+title: "C7 - Instructions"
+description: |
+  Instructions for chapter 7: "R Markdown" 
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this chapter you will learn what R Markdown is and how you can use it to create a reproducible report with it.
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. 
+
+The structure of this chapter is somewhat different from the preceding chapters. Please do not get confused by that and just follow the instructions below. 
+
+## Getting ready
+
+### Step 1
+
+Briefly check out the [exercise sheet](C7_exercise.html){target="blank"} for chapter 7 to get an impression of what you need to learn/know to solve it.
+
+### Step 2
+
+Solve Tasks 1-2 of the exercise sheet.
+
+## R Markdown
+
+### Step 3
+
+Watch the following video: [Intro to R Markdown](https://www.youtube.com/watch?v=fzHzCocjASg){target="blank"}
+
+Solve Tasks 3-4 of the exercise sheet. 
+
+### Step 4
+
+Compare your solutions to the sample solution R-Markdown file that can be downloaded via the following link:
+[C7 - R Markdown Solution](https://raw.githubusercontent.com/PHPtum/PHP_teaching_material/main/SSRC_Material/C7_material/SSRC_C7_model_solution.Rmd){target="blank"}
+
+## Additional Resources
+
+* [Cheat Sheet: R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf){target="blank"} 
+
+* [R Markdown Website](https://rmarkdown.rstudio.com/lesson-1.html){target="blank"}
+
+* RStudio -> Help -> Markdown Quick Reference 

@@ -1,0 +1,99 @@
+---
+title: 'SSRC: Exercise Chapter 7 - Model'
+output:
+  html_document:
+    theme: journal
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 5
+    number_sections: false
+    fig_caption: true
+---
+
+### Load Data and Packages
+
+#### Load Packages
+
+```{r eval=TRUE, message=FALSE, warning=FALSE}
+# Load tidyverse package
+library("tidyverse")
+
+# Load "knitr" package -> needed for kable() command 
+library("knitr")
+
+```
+
+#### Load Dataset
+
+```{r}
+# Load the dataset
+SSRC_data <- read.csv("SSRC_data.csv")
+
+```
+
+### Data Preparation
+Get a first impression of the dataset.
+```{r}
+kable(head(SSRC_data))
+
+```
+
+Transform the **three** categorical variables in the dataset into factor variables. 
+```{r}
+# Transform into factor variables 
+SSRC_data <- mutate(SSRC_data, gender = as.factor(gender),
+                               education_level = as.factor(education_level),
+                               physical_activity_level = as.factor(physical_activity_level))
+
+```
+
+### BMI Distribution
+In the following, we will analyze the distribution of [BMI](https://en.wikipedia.org/wiki/Body_mass_index) graphically by means of:
+
+1. A Histogram 
+2. A Density Plot
+
+#### Histogram
+
+```{r}
+# Create histogram
+ggplot(data = SSRC_data, mapping = aes(x = bmi)) +
+  geom_histogram()
+
+```
+
+#### Density Plot
+
+```{r}
+# Create density plot
+ggplot(data = SSRC_data, mapping = aes(x = bmi)) +
+  geom_density()
+
+```
+
+
+### Age Distribution
+In the following, we will analyze the distribution of age graphically by means of:
+
+* A Histogram 
+* A Density Plot
+
+#### Histogram
+
+```{r echo=FALSE, message=FALSE}
+# Create histogram
+ggplot(data = SSRC_data, mapping = aes(x = age)) +
+  geom_histogram()
+
+```
+
+#### Density Plot
+
+```{r echo = FALSE}
+# Create density plot
+ggplot(data = SSRC_data, mapping = aes(x = age)) +
+  geom_density()
+
+```

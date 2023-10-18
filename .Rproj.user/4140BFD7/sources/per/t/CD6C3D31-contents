@@ -1,0 +1,88 @@
+---
+title: "C3 - Instructions"
+description: |
+  Instructions for chapter 3: "Data Manipulation" 
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this chapter you will learn how to
+
+* Differentiate variable types
+* Modify existing variables
+* Create new variables
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions below will guide you through the process of solving the exercise sheet.
+
+## Getting ready
+
+### Step 1
+
+Briefly check out the [exercise sheet](C3_exercise.html){target="blank"} for chapter 3 to get an impression of what you need to learn/know to solve it.
+
+
+### Step 2
+
+Watch the following YouTube Video:
+[Import Packages and Load Data](https://www.youtube.com/watch?v=e8B9YU_M5FM&list=PLtL57Fdbwb_Chn-dNR0qBjH3esKS2MXY3&index=3){target="blank"}
+
+### Step 3
+
+Solve tasks 1-6 of the exercise sheet.
+
+## The mutate() command
+
+### Step 4
+
+Do the “mutate” subchapter of the “Deriving Information with dplyr” tutorial offered in the posit Cloud:
+[Deriving Information with dplyr](https://posit.cloud/learn/primers/2.3){target="blank"}
+
+Solve task 7 of the exercise sheet.
+
+## Manipulating variables
+
+### Step 5
+
+Watch the following Video:  
+[Data Types](https://www.youtube.com/watch?v=VtUVQWl0aRA&list=PLtL57Fdbwb_Chn-dNR0qBjH3esKS2MXY3&index=6){target="blank"}
+
+Solve tasks 8-11.
+
+### Step 6
+
+Watch the following Video:
+[Rename Variables](https://www.youtube.com/watch?v=q_ax_aG6ZdQ&list=PLtL57Fdbwb_Chn-dNR0qBjH3esKS2MXY3&index=7){target="blank"}
+
+Solve task 12.
+
+### Step 7
+
+Watch the following Video: 
+[Create Categorical Variables](https://www.youtube.com/watch?v=rLXlab5KzBA){target="blank"}
+
+Solve task 13.
+
+### Step 8
+
+Compare your solutions to the [sample solution](C3_solution.html){target="blank"} for exercise sheet 3.
+
+## Additional Resources
+
+[Cheat Sheet: Work with factor variables](https://raw.githubusercontent.com/rstudio/cheatsheets/master/factors.pdf){target="blank"} -> Great overview on how to work with factor variables in the tidyverse context
+
+
+
+
+
+
+
+

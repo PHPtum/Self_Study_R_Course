@@ -1,0 +1,109 @@
+---
+title: "C5 - Instructions"
+description: |
+  Instructions for chapter 5: "Regression Models" 
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this chapter you will learn how to  and how to work with their results
+
+* Fit regression models in R
+* work with regression model results in R
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions below will guide you through the process of solving the exercise sheet.
+
+## Getting ready
+
+### Step 1
+
+Briefly check out the [exercise sheet](C5_exercise.html){target="blank"} for chapter 5 to get an impression of what you need to learn/know to solve it.
+
+### Step 2
+
+Solve task 1-7 of the exercise sheet.
+
+**Comment:** Tasks 4-7 are identical to tasks 4-7 from the Chapter 4 exercise sheet. To save time, you could copy and paste from the respective solution.
+
+## Linear Regression
+
+### Step 3
+
+Watch the following Video: 
+[Simple Linear Regression](https://www.youtube.com/watch?v=owI7zxCqNY0&list=RDCMUCbdsyFBdG0Fmjroqk-ZoPcg&index=10){target="blank"}
+
+**Comment:** In our opinion, the video describes the basic idea behind linear regression models pretty good. If you are familiar with linear regression models, you can also skip this video. Those who have struggled with understanding linear regression models in the past might benefit from watching this video, though.
+
+### Step 4 
+
+Read subchapter 15.1 from “YaRrr! The Pirate’s Guide to R”: 
+[The Linear Model](https://bookdown.org/ndphillips/YaRrr/the-linear-model.html){target="blank"}
+
+### Step 5
+
+Read subchapters 15.2 and 15.2.1 from “YaRrr! The Pirate’s Guide to R”: 
+[Estimation with lm()](https://bookdown.org/ndphillips/YaRrr/linear-regression-with-lm.html){target="blank"}
+
+### Step 6
+
+Solve tasks 8-9 of the exercise sheet. 
+
+## Fitted Values and Residuals
+
+### Step 7
+
+Read subchapter 15.2.2 from “YaRrr! The Pirate’s Guide to R”: 
+[Getting Model Fits](https://bookdown.org/ndphillips/YaRrr/linear-regression-with-lm.html#getting-model-fits-with-fitted.values){target="blank"}
+
+Solve tasks 10-12 of the exercise sheet. 
+
+## Prediction
+
+### Step 8
+
+Read subchapters 15.2.3 from “YaRrr! The Pirate’s Guide to R”: 
+[Prediction](https://bookdown.org/ndphillips/YaRrr/linear-regression-with-lm.html#using-predict-to-predict-new-data-from-a-model){target="blank"}
+
+Solve tasks 13-14 of the exercise sheet.
+
+## Extracting Coefficients
+
+### Step 9
+
+Watch the following Video: 
+[Extract Regression Coefficients](https://www.youtube.com/watch?v=YzuYiKh8ec0https://www.youtube.com/watch?v=YzuYiKh8ec0){target="blank"}
+
+Solve task 15 of the exercise sheet.
+
+## Logistic Regression
+
+### Step 10
+
+Watch the following Video: 
+[Introduction to Logistic Regression](https://www.youtube.com/watch?v=yIYKR4sgzI8){target="blank"}
+
+**Comment:** This video describes the rational behind logistic regression. If you are already familiar with this topic, you can save time by skipping. For everybody who has doubts regarding their logistic regression skills this video might be very helpful.
+
+### Step 11
+
+Read subchapters 15.4 and 15.5 from “YaRrr! The Pirate’s Guide to R”: 
+[Logistic Regression](https://bookdown.org/ndphillips/YaRrr/regression-on-non-normal-data-with-glm.html){target="blank"}
+
+**Comment:** In subchapter 15.5, only the first part about logistic regression is relevant.
+
+### Step 12
+
+Solve Task 16-18 of the exercise sheet.
+
+### Step 13
+
+Compare your solutions to the [sample solution](C5_solution.html){target="blank"} for exercise sheet 5.

@@ -92,7 +92,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <meta property="description" itemprop="description" content="Here you find the sample solution for the case study of chapter 8"/>
 
-  <link rel="icon" type="image/png" href="images/favicon_tum.png"/>
+  <link rel="icon" type="image/png" href="./images/favicon_tum.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -2666,18 +2666,18 @@ Number of Fisher Scoring iterations: 7</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate mean</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>exp_number_cvd_events_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 377.8354</code></pre>
+<pre><code>[1] 377.9842</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate standard deviation</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>exp_number_cvd_events_boot</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 18.44513</code></pre>
+<pre><code>[1] 18.31047</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Calculate quantiles</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>exp_number_cvd_events_boot</span>, probs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>    2.5%    97.5% 
-340.9648 415.8016 </code></pre>
+343.2449 412.4661 </code></pre>
 </div>
 <h1 id="risk-classification-tool">Risk classification tool</h1>
 <div class="layout-chunk" data-layout="l-body">
