@@ -1,26 +1,26 @@
 {
-    "id": "CD6C3D31",
+    "id": "B39F83B8",
     "path": "I:/l10/3_Lehre_Public/10 - R Kurs/Self_Study_R_Course/C3_instructions.Rmd",
     "project_path": "C3_instructions.Rmd",
     "type": "r_markdown",
-    "hash": "3753026328",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1684745684661.0,
+    "created": 1712136584235.0,
     "source_on_save": false,
-    "relative_order": 9,
+    "relative_order": 3,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "50,25",
-        "scrollLine": "0"
+        "cursorPosition": "45,0",
+        "scrollLine": "37"
     },
     "folds": "",
-    "lastKnownWriteTime": 1684995589,
+    "lastKnownWriteTime": 1712136762,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1684995592586,
+    "last_content_update": 1712136762772,
     "read_only": false,
     "read_only_alternatives": []
 }
