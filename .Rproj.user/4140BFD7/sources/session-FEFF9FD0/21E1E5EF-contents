@@ -109,7 +109,8 @@ If you want to do something in R but you do not now how to do it...
 * Google it!!!
 * Search for what you need (e.g. “rename variables”) and add “in R”
 * The information is almost certainly available, you just need to find it…;)
-* Even experienced R users google all the time.
+* An alternative to using google is to ask ChatGTP for help, which is often faster than the google option
+* Even experienced R users google or use ChatGTP all the time.
 
 
 ## Troubleshooting
