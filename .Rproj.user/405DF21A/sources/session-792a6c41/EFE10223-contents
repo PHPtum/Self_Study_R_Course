@@ -1,0 +1,69 @@
+---
+title: "C6 - Instructions"
+description: |
+  Instructions for chapter 6: "Functions and Loops" 
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Introduction
+
+In this chapter you will learn how to 
+
+* Build your own customized functions 
+* Use Loops 
+* Apply the bootstrap method 
+
+To meet this chapter's learning objectives, please complete the respective exercise sheet. The instructions below will guide you through the process of solving the exercise sheet.
+
+## Getting ready
+
+### Step 1
+
+Briefly check out the [exercise sheet](C6_exercise.html){target="blank"} for chapter 6 to get an impression of what you need to learn/know to solve it.
+
+### Step 2
+
+Solve task 1-7 of the exercise sheet.
+
+**Comment:** Tasks 4-7 are identical to tasks 4-7 from the Chapter 4 and 5 exercise sheets. To save time, you could copy and paste from the respective solution.
+
+## Functions
+
+### Step 3
+
+Read the following blog post: 
+
+[How to Write Functions in R](https://www.dataquest.io/blog/write-functions-in-r/){target="blank"}
+
+Solve tasks 8-13 of the exercise sheet.
+
+**Comment:** Many of the things you need to solve these tasks were taught in chapter 5 of the SSRC.
+
+## Loops
+
+### Step 4
+
+Watch the following video: [For Loops](https://www.youtube.com/watch?v=h987LWDvqlQ&t){target="blank"}
+
+Solve tasks 14-16 of the exercise sheet. 
+
+## Bootstrap
+
+### Step 5
+
+Watch the following video: [Bootstrap Basics](https://www.youtube.com/watch?v=Xz0x-8-cgaQ&t){target="blank"}
+
+Solve tasks 17-22 of the exercise sheet.
+
+### Step 6
+
+Compare your solutions to the [sample solution](C6_solution.html){target="blank"} for exercise sheet 6.
+
